@@ -20,6 +20,7 @@ public class Clientes_act extends AppCompatActivity {
     private EditText text;
     private Button btn;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,7 +28,7 @@ public class Clientes_act extends AppCompatActivity {
 
         sp1 = (Spinner) findViewById(R.id.spinCliente);
         sp2 = (Spinner) findViewById(R.id.spinPlanes);
-        text = (EditText) findViewById(R.id.textPlain);
+        text = (EditText) findViewById(R.id.plano);
         txt = (TextView) findViewById(R.id.textView);
         btn = (Button) findViewById(R.id.btn);
 
@@ -45,6 +46,9 @@ public class Clientes_act extends AppCompatActivity {
         String cliente = sp1.getSelectedItem().toString();
         String plan = sp2.getSelectedItem().toString();
         Planes costo = new Planes();
+
+        int monto= Integer.parseInt(text.getText().toString());
+
         if (cliente.equals("Pepe")) {
             switch (plan) {
                 case "Norte":
