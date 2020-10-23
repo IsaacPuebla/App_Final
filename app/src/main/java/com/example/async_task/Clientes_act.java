@@ -2,6 +2,7 @@ package com.example.async_task;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -47,64 +48,207 @@ public class Clientes_act extends AppCompatActivity {
         String plan = sp2.getSelectedItem().toString();
         Planes costo = new Planes();
 
-        int monto= Integer.parseInt(text.getText().toString());
+        String monto= text.getText().toString();
 
-        if (cliente.equals("Pepe")) {
-            switch (plan) {
-                case "Norte":
-                    txt.setText("El costo del plan es $" + costo.getNorte());
-                    break;
-                case "Cordillera":
-                    txt.setText("El costo del plan es $" + costo.getCordillera());
-                    break;
-                case "Costa":
-                    txt.setText("El costo del plan es $" + costo.getCosta());
-                    break;
-                case "Sur":
-                    txt.setText("El costo del plan es $" + costo.getSur());
-                    break;
-                default:
-                    txt.setText("No ingresaste ningun plan");
-                    break;
+        if(!monto.isEmpty()){
+            int pagar= Integer.parseInt(monto);
+
+            if (cliente.equals("Pepe")) {
+                switch (plan) {
+                    case "Norte":
+                        txt.setText("El costo del plan es $" + costo.getNorte());
+                        if(pagar<costo.getNorte()){
+                            int faltante=costo.getNorte()-pagar;
+                            txt.setText("Has cancelado: $"+pagar+ " te quedan por cancelar: $"+ faltante+
+                            "  El costo del plan es $" + costo.getNorte());
+                        }
+                        else if(pagar>costo.getNorte()){
+                            txt.setText("Estas intentando pagar mas del precio del plan."+
+                            "  El costo del plan es $" + costo.getNorte());
+                        }
+                        else{
+                            txt.setText("Felicidades has contratado el plan.");
+                        }
+                        break;
+                    case "Cordillera":
+                        if(pagar<costo.getCordillera()){
+                            int faltante=costo.getCordillera()-pagar;
+                            txt.setText("Has cancelado: $"+pagar+ " te quedan por cancelar: $"+ faltante+
+                                    "  El costo del plan es $" + costo.getCordillera());
+                        }
+                        else if(pagar>costo.getCordillera()){
+                            txt.setText("Estas intentando pagar mas del precio del plan."+
+                            "  El costo del plan es $" + costo.getCordillera());
+                        }
+                        else{
+                            txt.setText("Felicidades has contratado el plan.");
+                        }
+                        break;
+                    case "Costa":
+                        if(pagar<costo.getCosta()){
+                            int faltante=costo.getCosta()-pagar;
+                            txt.setText("Has cancelado: $"+pagar+ " te quedan por cancelar: $"+ faltante+
+                            "  El costo del plan es $" + costo.getCosta());
+                        }
+                        else if(pagar>costo.getCosta()){
+                            txt.setText("Estas intentando pagar mas del precio del plan."+
+                            "  El costo del plan es $" + costo.getCosta());
+                        }
+                        else{
+                            txt.setText("Felicidades has contratado el plan.");
+                        }
+                        break;
+                    case "Sur":
+                        if(pagar<costo.getSur()){
+                            int faltante=costo.getSur()-pagar;
+                            txt.setText("Has cancelado: $"+pagar+ " te quedan por cancelar: $"+ faltante+
+                            "  El costo del plan es $" + costo.getSur());
+                        }
+                        else if(pagar>costo.getSur()){
+                            txt.setText("Estas intentando pagar mas del precio del plan."+
+                            "  El costo del plan es $" + costo.getSur());
+                        }
+                        else{
+                            txt.setText("Felicidades has contratado el plan.");
+                        }
+                        break;
+                    default:
+                        txt.setText("No ingresaste ningun plan");
+                        break;
+                }
+            } else if (cliente.equals("Pancho")) {
+                switch (plan) {
+                    case "Norte":
+                        txt.setText("El costo del plan es $" + costo.getNorte());
+                        if(pagar<costo.getNorte()){
+                            int faltante=costo.getNorte()-pagar;
+                            txt.setText("Has cancelado: $"+pagar+ " te quedan por cancelar: $"+ faltante+
+                                    "  El costo del plan es $" + costo.getNorte());
+                        }
+                        else if(pagar>costo.getNorte()){
+                            txt.setText("Estas intentando pagar mas del precio del plan."+
+                                    "  El costo del plan es $" + costo.getNorte());
+                        }
+                        else{
+                            txt.setText("Felicidades has contratado el plan.");
+                        }
+                        break;
+                    case "Cordillera":
+                        if(pagar<costo.getCordillera()){
+                            int faltante=costo.getCordillera()-pagar;
+                            txt.setText("Has cancelado: $"+pagar+ " te quedan por cancelar: $"+ faltante+
+                                    "  El costo del plan es $" + costo.getCordillera());
+                        }
+                        else if(pagar>costo.getCordillera()){
+                            txt.setText("Estas intentando pagar mas del precio del plan."+
+                                    "  El costo del plan es $" + costo.getCordillera());
+                        }
+                        else{
+                            txt.setText("Felicidades has contratado el plan.");
+                        }
+                        break;
+                    case "Costa":
+                        if(pagar<costo.getCosta()){
+                            int faltante=costo.getCosta()-pagar;
+                            txt.setText("Has cancelado: $"+pagar+ " te quedan por cancelar: $"+ faltante+
+                                    "  El costo del plan es $" + costo.getCosta());
+                        }
+                        else if(pagar>costo.getCosta()){
+                            txt.setText("Estas intentando pagar mas del precio del plan."+
+                                    "  El costo del plan es $" + costo.getCosta());
+                        }
+                        else{
+                            txt.setText("Felicidades has contratado el plan.");
+                        }
+                        break;
+                    case "Sur":
+                        if(pagar<costo.getSur()){
+                            int faltante=costo.getSur()-pagar;
+                            txt.setText("Has cancelado: $"+pagar+ " te quedan por cancelar: $"+ faltante+
+                                    "  El costo del plan es $" + costo.getSur());
+                        }
+                        else if(pagar>costo.getSur()){
+                            txt.setText("Estas intentando pagar mas del precio del plan."+
+                                    "  El costo del plan es $" + costo.getSur());
+                        }
+                        else{
+                            txt.setText("Felicidades has contratado el plan.");
+                        }
+                        break;
+                    default:
+                        txt.setText("No ingresaste ningun plan");
+                        break;
+                }
+            } else if (cliente.equals("Adrian")) {
+                switch (plan) {
+                    case "Norte":
+                        txt.setText("El costo del plan es $" + costo.getNorte());
+                        if(pagar<costo.getNorte()){
+                            int faltante=costo.getNorte()-pagar;
+                            txt.setText("Has cancelado: $"+pagar+ " te quedan por cancelar: $"+ faltante+
+                                    "  El costo del plan es $" + costo.getNorte());
+                        }
+                        else if(pagar>costo.getNorte()){
+                            txt.setText("Estas intentando pagar mas del precio del plan."+
+                                    "  El costo del plan es $" + costo.getNorte());
+                        }
+                        else{
+                            txt.setText("Felicidades has contratado el plan.");
+                        }
+                        break;
+                    case "Cordillera":
+                        if(pagar<costo.getCordillera()){
+                            int faltante=costo.getCordillera()-pagar;
+                            txt.setText("Has cancelado: $"+pagar+ " te quedan por cancelar: $"+ faltante+
+                                    "  El costo del plan es $" + costo.getCordillera());
+                        }
+                        else if(pagar>costo.getCordillera()){
+                            txt.setText("Estas intentando pagar mas del precio del plan."+
+                                    "  El costo del plan es $" + costo.getCordillera());
+                        }
+                        else{
+                            txt.setText("Felicidades has contratado el plan.");
+                        }
+                        break;
+                    case "Costa":
+                        if(pagar<costo.getCosta()){
+                            int faltante=costo.getCosta()-pagar;
+                            txt.setText("Has cancelado: $"+pagar+ " te quedan por cancelar: $"+ faltante+
+                                    "  El costo del plan es $" + costo.getCosta());
+                        }
+                        else if(pagar>costo.getCosta()){
+                            txt.setText("Estas intentando pagar mas del precio del plan."+
+                                    "  El costo del plan es $" + costo.getCosta());
+                        }
+                        else{
+                            txt.setText("Felicidades has contratado el plan.");
+                        }
+                        break;
+                    case "Sur":
+                        if(pagar<costo.getSur()){
+                            int faltante=costo.getSur()-pagar;
+                            txt.setText("Has cancelado: $"+pagar+ " te quedan por cancelar: $"+ faltante+
+                                    "  El costo del plan es $" + costo.getSur());
+                        }
+                        else if(pagar>costo.getSur()){
+                            txt.setText("Estas intentando pagar mas del precio del plan."+
+                                    "  El costo del plan es $" + costo.getSur());
+                        }
+                        else{
+                            txt.setText("Felicidades has contratado el plan.");
+                        }
+                        break;
+                    default:
+                        txt.setText("No ingresaste ningun plan");
+                        break;
+                }
+            } else {
+                txt.setText("No ingresaste ningun cliente");
             }
-        } else if (cliente.equals("Pancho")) {
-            switch (plan) {
-                case "Norte":
-                    txt.setText("El costo del plan es $" + costo.getNorte());
-                    break;
-                case "Cordillera":
-                    txt.setText("El costo del plan es $" + costo.getCordillera());
-                    break;
-                case "Costa":
-                    txt.setText("El costo del plan es $" + costo.getCosta());
-                    break;
-                case "Sur":
-                    txt.setText("El costo del plan es $" + costo.getSur());
-                    break;
-                default:
-                    txt.setText("No ingresaste ningun plan");
-                    break;
-            }
-        } else if (cliente.equals("Adrian")) {
-            switch (plan) {
-                case "Norte":
-                    txt.setText("El costo del plan es $" + costo.getNorte());
-                    break;
-                case "Cordillera":
-                    txt.setText("El costo del plan es $" + costo.getCordillera());
-                    break;
-                case "Costa":
-                    txt.setText("El costo del plan es $" + costo.getCosta());
-                    break;
-                case "Sur":
-                    txt.setText("El costo del plan es $" + costo.getSur());
-                    break;
-                default:
-                    txt.setText("No ingresaste ningun plan");
-                    break;
-            }
-        } else {
-            txt.setText("No ingresaste ningun cliente");
         }
+        else{
+            txt.setText("No ingresaste monto a pagar");
+        }
+
     }
 }

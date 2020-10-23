@@ -62,4 +62,8 @@ public class Menu_act extends AppCompatActivity {
         Intent i =new Intent(this,Info_act.class);
         startActivity(i);
     }
+    public void Base(View v){
+        Intent i=new Intent(this,Insumos_act.class);
+        startActivity(i);
+    }
 }
