@@ -39,7 +39,7 @@ public class Maps_act extends FragmentActivity implements OnMapReadyCallback {
         mMap = googleMap;
 
 
-        LatLng Localizacion = new LatLng(-33.4513, -70.6653);
+        LatLng Localizacion = new LatLng(-33.55970, -70.571441);
         mMap.addMarker(new MarkerOptions().position(Localizacion).title("Tu estas aqui! "));
         mMap.moveCamera(CameraUpdateFactory.newLatLng(Localizacion));
     }
